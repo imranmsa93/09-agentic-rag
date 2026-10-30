@@ -12,6 +12,10 @@ urls = [
     "https://lilianweng.github.io/posts/2023-06-23-agent/",
     "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
     "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
+    "https://lilianweng.github.io/posts/2026-06-24-scaling-laws/",
+    "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
+    "https://lilianweng.github.io/posts/2021-07-11-diffusion-models/"
+
 ]
 embeddings = OllamaEmbeddings(model="embeddinggemma")
 vector_store = PineconeVectorStore(index_name=os.environ["INDEX_NAME"] ,embedding=embeddings)
@@ -24,8 +28,8 @@ def scrapper():
     doclist = [doc for item in docs for doc in item]
     print("Working with RecursiveCharacterTextSplitter for text Splitting")
     splitter = RecursiveCharacterTextSplitter(
-            chunk_size=250,
-            chunk_overlap=25,
+            chunk_size=600,
+            chunk_overlap=60,
         
         )
     chunks = splitter.split_documents(doclist)

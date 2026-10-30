@@ -11,6 +11,7 @@ state = {"question": "What are the two parts of agent memory?"}
 
 
 def run(label, node):
+    print(f"\n=== Before {label} Keys: {list(state.keys())}") 
     update = node(state)
     print(f"\n=== {label} wrote: {list(update.keys())}")
     state.update(update)

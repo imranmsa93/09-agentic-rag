@@ -5,6 +5,18 @@ from rag.graph import graph
 
 DEFAULT_QUESTION = "What is agent memory?"
 
+def run_question(question):
+    state = {"question": question}
+    path = []
+    for step in graph.stream(
+        {"question": question},
+        stream_mode="updates",
+        config={"recursion_limit": 15},
+    ):
+        for node, update in step.items():
+            path.append(node)
+            state.update(update)
+    return path, state
 
 def main():
     print("09-agentic-rag - Implementation of Advanced RAG!")

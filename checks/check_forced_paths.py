@@ -10,7 +10,6 @@ from rag.core.config import NO_ANSWER
 GOOD = "Chain of thought prompting asks a model to reason step by step."
 BAD = "Chain of thought prompting stores memory in quantum crystals."
 
-
 class FakeGeneration:
     def __init__(self, replies):
         self.replies, self.calls = list(replies), 0
@@ -27,6 +26,8 @@ CASES = [
     ("invented answer, then a real one", [BAD, GOOD]),
     ("invented answer every time", [BAD]),
 ]
+
+
 
 real = nodes.generation_chain
 for label, replies in CASES:
